@@ -1,0 +1,28 @@
+:root {
+    --bg-color1: #E8F5F8;
+    --bg-color2: #F4EDDF;
+    --bg-color3: #E5E5E5;
+
+}
+
+.bg-board1 {
+    /* background-color: var(--bg-color1); */
+    color: black;
+    padding: 103px 0 44px;
+    background-image: url("/img/board1.png");
+    background-size: cover;
+}
+
+.bg-board1 a {
+    color: black;
+    font-family: Mustica Pro, sans-serif;
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.bg1 {
+    background-color: var(--bg-color1);
+    width: 100%;
+    height: 56px;
+    position: relative;
+}
