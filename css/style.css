@@ -5,15 +5,16 @@
 
 }
 
-.bg-board1 {
-    /* background-color: var(--bg-color1); */
-    color: black;
-    padding: 103px 0 44px;
-    background-image: url("/img/board1.png");
+.bg-header {
+    padding: 20% 0;
+    background-image: url("/img/bg-under-header-1x.png");
+    background-position: center center;
+    background-repeat: no-repeat;
     background-size: cover;
+    background-color: var(--bg-color1);
 }
 
-.bg-board1 a {
+.bg-header a {
     color: black;
     font-family: Mustica Pro, sans-serif;
     font-size: 36px;
@@ -22,7 +23,6 @@
 
 .bg1 {
     background-color: var(--bg-color1);
-    width: 100%;
-    height: 56px;
+    margin: 0 auto;
     position: relative;
 }
