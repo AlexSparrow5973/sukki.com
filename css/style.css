@@ -5,8 +5,8 @@
 
 }
 
-.bg-header {
-    padding: 20% 0;
+header {
+    padding: 0.3% 0 40%;
     background-image: url("/img/bg-under-header-1x.png");
     background-position: center center;
     background-repeat: no-repeat;
@@ -14,15 +14,30 @@
     background-color: var(--bg-color1);
 }
 
-.bg-header a {
+header a {
     color: black;
     font-family: Mustica Pro, sans-serif;
     font-size: 36px;
     font-weight: 600;
 }
-
+/* 
 .bg1 {
     background-color: var(--bg-color1);
     margin: 0 auto;
     position: relative;
+} */
+
+.navbar-nav {
+    display: flex;
+    margin-left: 0;
+  }
+.nav-item {
+    flex: 1 1 auto;
+    margin-left: 4rem;
+  }
+
+.about {
+    background-color: var(--bg-color2);
+    display: flex;
+    justify-content: space-between;
 }
