@@ -5,6 +5,10 @@
 
 }
 
+body {
+    font-family: "Neucha", "Roboto", sans-serif;
+}
+
 header {
     padding: 0.3% 0 40%;
     background-image: url("/img/bg-under-header-1x.png");
@@ -14,18 +18,11 @@ header {
     background-color: var(--bg-color1);
 }
 
-header a {
-    color: black;
-    font-family: Mustica Pro, sans-serif;
-    font-size: 36px;
-    font-weight: 600;
+.nav-item a {
+    color: var(--bs-dark);
+    font-size: 2rem;
+    font-weight: 400;
 }
-/* 
-.bg1 {
-    background-color: var(--bg-color1);
-    margin: 0 auto;
-    position: relative;
-} */
 
 .navbar-nav {
     display: flex;
@@ -36,8 +33,26 @@ header a {
     margin-left: 4rem;
   }
 
-.about {
+.about, .card-body {
     background-color: var(--bg-color2);
-    display: flex;
-    justify-content: space-between;
+}
+
+/* .card-body:hover {
+    background-color: black;
+    transition: ease 0.3s;
+    color: var(--bg-color1);
+} */
+
+.card {
+    max-width: 18rem;
+    border: none;
+}
+
+.card-body {
+    margin-top: 0.5rem;
+    border-radius: 8px;
+}
+
+.card-title {
+    margin: 0;
 }
