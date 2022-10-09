@@ -2,6 +2,7 @@
     --bg-color1: #E8F5F8;
     --bg-color2: #F4EDDF;
     --bg-color3: #E5E5E5;
+    --bg-color4: #ccbea3;
 
 }
 
@@ -12,9 +13,30 @@ body {
 header {
     padding: 0.3% 0 40%;
     background-image: url("/img/bg-under-header-1x.png");
+    background-color: var(--bg-color1);
+}
+
+.bg-set {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.board2 {
+    padding: 50px 0;
+    background-image: url("/img/board2.png");
+    background-color: var(--bg-color1);
+}
+
+.board3 {
+    padding: 50px 0;
+    background-image: url("/img/board3.png");
+    background-color: var(--bg-color1);
+}
+
+.board4 {
+    padding: 200px 0;
+    background-image: url("/img/board4.png");
     background-color: var(--bg-color1);
 }
 
@@ -37,22 +59,36 @@ header {
     background-color: var(--bg-color2);
 }
 
-/* .card-body:hover {
-    background-color: black;
+.card-body:hover {
+    background-color: var(--bg-color4);
     transition: ease 0.3s;
     color: var(--bg-color1);
-} */
+}
 
 .card {
     max-width: 18rem;
     border: none;
 }
 
+.card img {
+    border-radius: 8px;
+}
+
 .card-body {
     margin-top: 0.5rem;
     border-radius: 8px;
+    box-shadow: 1px 5px 3px rgba(0,0,0,0.3);
+}
+
+.card-body a {
+    color: var(--bs-dark);
+    text-decoration: none;
 }
 
 .card-title {
     margin: 0;
+}
+
+.block-icon {
+    
 }
