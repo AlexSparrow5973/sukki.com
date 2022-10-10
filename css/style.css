@@ -1,18 +1,13 @@
 :root {
-    --bg-color1: #E8F5F8;
-    --bg-color2: #F4EDDF;
-    --bg-color3: #E5E5E5;
-    --bg-color4: #ccbea3;
-
+    --bg-color1: rgba(245,226,220,0.5);
+    --bg-color2: rgba(255,250,242,1);;
 }
 
 body {
-    font-family: "Neucha", "Roboto", sans-serif;
+    font-family: "Caveat", "Roboto", sans-serif;
 }
 
 header {
-    padding: 0.3% 0 40%;
-    background-image: url("/img/bg-under-header-1x.png");
     background-color: var(--bg-color1);
 }
 
@@ -54,15 +49,21 @@ header {
     flex: 1 1 auto;
     margin-left: 4rem;
   }
+.carousel-inner img {
+    opacity: 0.5;
+}
 
-.about, .card-body {
+.about, .catalog-all {
+    background-color: var(--bg-color2);
+}
+
+.card-body {
     background-color: var(--bg-color2);
 }
 
 .card-body:hover {
-    background-color: var(--bg-color4);
+    background-color: var(--bg-color1);
     transition: ease 0.3s;
-    color: var(--bg-color1);
 }
 
 .card {
@@ -72,6 +73,11 @@ header {
 
 .card img {
     border-radius: 8px;
+}
+
+.card img:hover {
+    opacity: 0.7;
+    transition: ease 0.5s;
 }
 
 .card-body {
