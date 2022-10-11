@@ -1,14 +1,23 @@
 :root {
-    --bg-color1: rgba(245,226,220,0.5);
-    --bg-color2: rgba(255,250,242,1);;
+    --bg-color1: rgb(245,226,220);
+    --bg-color2: rgba(255,250,242,1);
 }
 
 body {
-    font-family: "Caveat", "Roboto", sans-serif;
+    font-family: 'Amatic SC', "Roboto", sans-serif;
+    letter-spacing: 2px;
 }
 
 header {
     background-color: var(--bg-color1);
+}
+
+div > h2 {
+    font-size: 2.5rem;
+}
+
+.description {
+    font-size: 2rem;
 }
 
 .bg-set {
@@ -17,7 +26,12 @@ header {
     background-size: cover;
 }
 
-.board2 {
+.board4 {
+    padding: 200px 0;
+    background-image: url("/img/board4.png");
+    background-color: var(--bg-color1);
+}
+/* .board2 {
     padding: 50px 0;
     background-image: url("/img/board2.png");
     background-color: var(--bg-color1);
@@ -27,17 +41,13 @@ header {
     padding: 50px 0;
     background-image: url("/img/board3.png");
     background-color: var(--bg-color1);
-}
+} */
 
-.board4 {
-    padding: 200px 0;
-    background-image: url("/img/board4.png");
-    background-color: var(--bg-color1);
-}
+
 
 .nav-item a {
     color: var(--bs-dark);
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 400;
 }
 
