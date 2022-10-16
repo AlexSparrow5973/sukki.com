@@ -18,30 +18,24 @@
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
           <a class="navbar-brand" href="#"></a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+            aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="#">Обо мне</a>
+                <a class="nav-link" href="#catalog">Каталог</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Каталог</a>
+                <a class="nav-link" href="#buy_instruction">Как купить</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Как купить</a>
+                <a class="nav-link" href="#about_me">Обо мне</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Контакты</a>
+                <a class="nav-link" href="#contacts">Контакты</a>
               </li>
             </ul>
           </div>
@@ -107,46 +101,36 @@
         </button>
       </div>
     </section>
-    <section class="catalog-all pt-5 pb-5">
+    <section id="catalog" class="catalog-all pt-5 pb-5">
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <h2 class="text-center mb-3">Каталог</h2>
+            <h2 class="text-center mb-5">Каталог</h2>
           </div>
         </div>
       </div>
       <div class="container">
-        <div class="row row-cols-1 row-cols-lg-5 row-cols-md-3 g-4">
+        <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2 g-4">
           <div class="col">
             <div class="card">
-              <img
-                src="/img/eheveria.png"
-                class="card-img-top"
-                alt="eheveria"
-              />
-              <div class="card-body">
-                <a href="#" class="card-title text-uppercase">eheveria</a>
+              <img src="/img/eheveria.png" class="card-img-top" alt="eheveria">
+              <div class="card-body text-center">
+                <a href="#">eheveria</a>
               </div>
             </div>
           </div>
           <div class="col">
             <div class="card">
-              <img
-                src="/img/pahifitum.png"
-                class="card-img-top"
-                alt="pahifitum"
-              />
-              <div class="card-body">
-                <h5 class="card-title text-center text-uppercase">
-                  Card title
-                </h5>
+              <img src="/img/pahifitum.png" class="card-img-top" alt="pahifitum">
+              <div class="card-body text-center">
+              <a href="#">pahifitum</a>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <section class="buy-instruction pt-5 pb-5">
+    <section id="buy_instruction" class="buy-instruction pt-5 pb-5">
       <div class="container">
         <div class="row">
           <div class="col-12">
@@ -154,7 +138,16 @@
           </div>
         </div>
         <div class="row align-item-center">
-          <div class="col-6">Описание возможных способов оплаты</div>
+          <div class="col-6">
+            <p class="description">После совершения заказа, дождитесь получения СМС-оповещения о том, 
+            что ваш заказ готов к выдаче. Заказы которые состоят только из суккулентов или грунтов 
+            собираются быстро, такой заказ возможно забрать день в день. 
+            Заказы в которых присутствуют готовые композиции, горшки или подносы, могут собираться 
+            дольше в связи с возможным отсутствием желаемой расцветки изделия. В таком случае на 
+            выполнение заказа необходимо не менее 5 рабочих дней. Уточнить сроки готовности заказа 
+            можно по почте, телефону или через соц.сети.
+            </p>
+          </div>
           <div class="col-xxl-5 col-xl-6 col-sm-12 mt-sm-3 mb-sm-3 text-center">
             <img
               src="/img/Rectangle30.png"
@@ -165,7 +158,7 @@
         </div>
       </div>
     </section>
-    <section class="about pt-5 pb-5">
+    <section id="about_me" class="about pt-5 pb-5">
       <div class="container">
         <div class="row">
           <div class="col-12">
@@ -173,21 +166,23 @@
           </div>
         </div>
         <div class="row align-item-center">
-          <div class="col-xxl-7 col-xl-6 col-sm-12">
+          <div class="col-12">
             <p class="description">
               Привет, меня зовут <strong>Вероника</strong>!<br /><br />
               Мне крайне интересно, кто заботится о своих растишках по ту
               сторону экрана. Если вы на этой страничке, то у нас с вами как
               минимум один общий интерес, и это прекрасный повод познакомиться
-              поближе!<br /><br />
-              Расскажу немного о себе.<br />По профессии и призванию я
+              поближе!</p>
+            </div>
+          <div class="col-xxl-7 col-xl-6 col-sm-12">
+            <p class="description">
+              Расскажу немного о себе.<br>По профессии и призванию я
               поглотитель вкусной еды и дигустатор изысканных напитков. Очень
               люблю спорт и стараюсь поддерживать активный образ жизни. Однажды
               в горах, на скалах, я впервые увидела как растут суккуленты и даже
               умудрилась привезти несколько штук домой. Они и по сей день
-              отлично себя чувствуют на альпийской горке.<br /><br />
-              Тогда я ещё не думала о коллекции, но случился карантин и вот я
-              здесь!
+              отлично себя чувствуют на альпийской горке. <br> Тогда я ещё не думала о 
+              коллекции, но случился карантин и вот я здесь!</p>
             </p>
           </div>
           <div class="col-xxl-5 col-xl-6 col-sm-12 mt-sm-3 mb-sm-3 text-center">
@@ -200,7 +195,7 @@
         </div>
       </div>
     </section>
-    <section class="contact-me pt-5 pb-5">
+    <section id="contacts" class="contact-me pt-5 pb-5">
       <div class="container">
         <div class="row">
           <div class="col-12">
@@ -208,20 +203,23 @@
           </div>
         </div>
         <div class="row align-item-center">
-          <div class="col-xxl-5 col-xl-6 col-sm-12 mt-sm-3 mb-sm-3 text-center">
+          <div class="col-lg-6 col-md-12 mt-md-3 mb-md-3 text-center">
             <img
               src="/img/Rectangle31.png"
               alt="sukki-buy-image"
               class="img-fluid"
             />
           </div>
-          <div class="col-6">
+          <div class="col-lg-6 col-md-12">
             <div class="text-center block-icon">
-              <a href="#"
-                ><img src="/img/insta-icon.png" alt="instagramm-icon"
-              /></a>
-              <a href="#"><img src="/img/vkcom-icon.png" alt="vkcom-icon" /></a>
-              <a href="#"><img src="/img/email-icon.png" alt="email-icon" /></a>
+              <a href="https://instagram.com/_green.level_?r=nametag" target="_blank">
+                <img src="/img/insta-icon.png" alt="insta-icon"><p>@_green.level_</p></a>
+              <div class="line"></div>
+              <a href="https://vk.com/serpiwomen" target="_blank">
+                <img src="/img/vkcom-icon.png" alt="vkcom-icon"><p>https://vk.com/serpiwomen</p></a>
+              <div class="line"></div>
+              <a href="mailto:mallkavianka@yandex.ru?subject=Sukki.com_Вопрос о суккулентах" target="_blank">
+                <img src="/img/email-icon.png" alt="email-icon"><p>mallkavianka@yandex.ru</p></a>
             </div>
           </div>
         </div>
@@ -232,10 +230,10 @@
       window.onscroll = function () {
         var scrolled = window.pageYOffset || document.documentElement.scrollTop; // Получаем положение скролла
         if (scrolled > 300) {
-          // Если нет, то делаем его полностью видимым
+          // Если прокрутка больше 300px, то делаем блок видимым
           document.querySelector(".header-bg").style.opacity = "1";
         } else {
-          // Если прокрутка есть, то делаем блок прозрачным
+          // Если нет, то делаем его полупрозрачным
           document.querySelector(".header-bg").style.opacity = "0.5";
         }
       };

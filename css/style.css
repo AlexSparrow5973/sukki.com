@@ -1,11 +1,12 @@
 :root {
     --bg-color1: rgb(245,226,220);
-    --bg-color2: rgba(255,250,242,1);
+    --bg-color2: rgba(255,250,242,0.7);
+    --bg-color3: rgba(195, 214, 240, 0.5);
 }
 
 body {
     font-family: 'Amatic SC', "Roboto", sans-serif;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
 }
 
 header {
@@ -18,6 +19,7 @@ div > h2 {
 
 .description {
     font-size: 2rem;
+    text-align: justify;
 }
 
 .bg-set {
@@ -25,25 +27,6 @@ div > h2 {
     background-repeat: no-repeat;
     background-size: cover;
 }
-
-.board4 {
-    padding: 200px 0;
-    background-image: url("/img/board4.png");
-    background-color: var(--bg-color1);
-}
-/* .board2 {
-    padding: 50px 0;
-    background-image: url("/img/board2.png");
-    background-color: var(--bg-color1);
-}
-
-.board3 {
-    padding: 50px 0;
-    background-image: url("/img/board3.png");
-    background-color: var(--bg-color1);
-} */
-
-
 
 .nav-item a {
     color: var(--bs-dark);
@@ -54,11 +37,13 @@ div > h2 {
 .navbar-nav {
     display: flex;
     margin-left: 0;
-  }
+}
+
 .nav-item {
     flex: 1 1 auto;
     margin-left: 4rem;
-  }
+}
+
 .carousel-inner img {
     opacity: 0.5;
 }
@@ -67,16 +52,8 @@ div > h2 {
     background-color: var(--bg-color2);
 }
 
-.card-body {
-    background-color: var(--bg-color2);
-}
-
-.card-body:hover {
-    background-color: var(--bg-color1);
-    transition: ease 0.3s;
-}
-
 .card {
+    background-color: var(--bg-color2);
     max-width: 18rem;
     border: none;
 }
@@ -91,20 +68,47 @@ div > h2 {
 }
 
 .card-body {
+    background-color: var(--bg-color1);
     margin-top: 0.5rem;
     border-radius: 8px;
     box-shadow: 1px 5px 3px rgba(0,0,0,0.3);
+    
+}
+
+.card-body:hover {
+    background-color: var(--bg-color3);
+    transition: ease 0.3s;
 }
 
 .card-body a {
     color: var(--bs-dark);
+    font-size: 2rem;
     text-decoration: none;
 }
 
-.card-title {
-    margin: 0;
+.block-icon {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
-.block-icon {
-    
+.block-icon a {
+    color: var(--bs-dark);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 40px;
+    text-decoration: none;
+}
+
+.line {
+    width: 200px;
+    height: 3px;
+    background-color: black;
+    margin: 0 auto;
+}
+
+.board4 {
+    padding: 200px 0;
+    background-image: url("/img/board4.png");
+    background-color: var(--bg-color1);
 }
