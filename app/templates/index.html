@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/fontello.css" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" href="{{url_for('static', filename='favicon.ico')}}" type="image/x-icon" />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/fontello.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet"/>
-    <title>Sukki.com</title>
+    <title>{{ title }}</title>
   </head>
   <body>
     <header class="fixed-top header-bg">
@@ -72,13 +72,13 @@
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="/img/slide-1.jpg" class="d-block w-100" alt="..." />
+            <img src="{{url_for('static', filename='/img/slide-1.jpg')}}" class="d-block w-100" alt="..." />
           </div>
           <div class="carousel-item">
-            <img src="/img/slide-2.jpg" class="d-block w-100" alt="..." />
+            <img src="{{url_for('static', filename='/img/slide-2.jpg')}}" class="d-block w-100" alt="..." />
           </div>
           <div class="carousel-item">
-            <img src="/img/slide-3.jpg" class="d-block w-100" alt="..." />
+            <img src="{{url_for('static', filename='/img/slide-3.jpg')}}" class="d-block w-100" alt="..." />
           </div>
         </div>
         <button
@@ -113,7 +113,7 @@
         <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2 g-4">
           <div class="col">
             <div class="card">
-              <img src="/img/eheveria.png" class="card-img-top" alt="eheveria">
+              <img src="{{url_for('static', filename='/img/eheveria.png')}}" class="card-img-top" alt="eheveria">
               <div class="card-body text-center">
                 <a href="#">eheveria</a>
               </div>
@@ -121,7 +121,7 @@
           </div>
           <div class="col">
             <div class="card">
-              <img src="/img/pahifitum.png" class="card-img-top" alt="pahifitum">
+              <img src="{{url_for('static', filename='/img/pahifitum.png')}}" class="card-img-top" alt="pahifitum">
               <div class="card-body text-center">
               <a href="#">pahifitum</a>
               </div>
@@ -150,7 +150,7 @@
           </div>
           <div class="col-xxl-5 col-xl-6 col-sm-12 mt-sm-3 mb-sm-3 text-center">
             <img
-              src="/img/Rectangle30.png"
+              src="{{url_for('static', filename='/img/Rectangle30.png')}}"
               alt="sukki-buy-image"
               class="img-fluid"
             />
@@ -187,7 +187,7 @@
           </div>
           <div class="col-xxl-5 col-xl-6 col-sm-12 mt-sm-3 mb-sm-3 text-center">
             <img
-              src="/img/rejule.png"
+              src="{{url_for('static', filename='/img/rejule.png')}}"
               alt="photo of the founder"
               class="img-fluid"
             />
@@ -205,7 +205,7 @@
         <div class="row align-item-center">
           <div class="col-lg-6 col-md-12 mt-md-3 mb-md-3 text-center">
             <img
-              src="/img/Rectangle31.png"
+              src="{{url_for('static', filename='/img/Rectangle31.png')}}"
               alt="sukki-buy-image"
               class="img-fluid"
             />
@@ -213,13 +213,13 @@
           <div class="col-lg-6 col-md-12">
             <div class="text-center block-icon">
               <a href="https://instagram.com/_green.level_?r=nametag" target="_blank">
-                <img src="/img/insta-icon.png" alt="insta-icon"><p>@_green.level_</p></a>
+                <img src="{{url_for('static', filename='/img/insta-icon.png')}}" alt="insta-icon"><p>@_green.level_</p></a>
               <div class="line"></div>
               <a href="https://vk.com/serpiwomen" target="_blank">
-                <img src="/img/vkcom-icon.png" alt="vkcom-icon"><p>https://vk.com/serpiwomen</p></a>
+                <img src="{{url_for('static', filename='/img/vkcom-icon.png')}}" alt="vkcom-icon"><p>https://vk.com/serpiwomen</p></a>
               <div class="line"></div>
               <a href="mailto:mallkavianka@yandex.ru?subject=Sukki.com_Вопрос о суккулентах" target="_blank">
-                <img src="/img/email-icon.png" alt="email-icon"><p>mallkavianka@yandex.ru</p></a>
+                <img src="{{url_for('static', filename='/img/email-icon.png')}}" alt="email-icon"><p>mallkavianka@yandex.ru</p></a>
             </div>
           </div>
         </div>
@@ -238,6 +238,6 @@
         }
       };
     </script>
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
   </body>
 </html>
