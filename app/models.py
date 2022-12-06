@@ -3,11 +3,12 @@ from flask import url_for
 from flask_login import UserMixin
 from flask_admin import form
 from flask_admin.contrib.sqla import ModelView
+from flask_sqlalchemy import SQLAlchemy
 from markupsafe import Markup
 from sqlalchemy.orm import relationship
 from werkzeug.security import generate_password_hash, check_password_hash
 
-from app.db import db
+db = SQLAlchemy()
 
 
 class User(db.Model, UserMixin):
@@ -42,13 +43,6 @@ class ProductGroup(db.Model):
         return f'ProductGroup {self.id} - {self.group_name}'
 
 
-cart_product = db.Table(
-    "cart_product",
-    db.Column("cart_id", db.Integer, db.ForeignKey("cart.id"), primary_key=True),
-    db.Column("product_id", db.Integer, db.ForeignKey("product.id"), primary_key=True),
-)
-
-
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, unique=True, nullable=False)
@@ -76,7 +70,27 @@ class Product(db.Model):
         return f'<Product {self.id} - {self.name}>'
 
 
-class ContentModelView(ModelView):
+cart_product = db.Table(
+    "cart_product",
+    db.Column("cart_id", db.Integer, db.ForeignKey("cart.id"), primary_key=True),
+    db.Column("product_id", db.Integer, db.ForeignKey("product.id"), primary_key=True),
+)
+
+
+class Cart(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(
+        db.Integer,
+        db.ForeignKey('user.id', ondelete='CASCADE'),
+        nullable=True,
+        index=True
+    )
+
+    def __repr__(self):
+        return f'<Cart {self.id}>'
+
+
+class ProductModelView(ModelView):
     def _list_thumbnail(view, context, model, name):
         if not model.path:
             return ""
@@ -91,20 +105,7 @@ class ContentModelView(ModelView):
     form_extra_fields = {
         'image': form.ImageUploadField(
             'Image',
-            base_path=os.path.join(os.path.dirname(__file__), '..', 'static'),
+            base_path=os.path.join(os.path.dirname(__file__), 'static/img'),
             thumbnail_size=(120, 120, True),
         )
     }
-
-
-class Cart(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(
-        db.Integer,
-        db.ForeignKey('user.id', ondelete='CASCADE'),
-        nullable=True,
-        index=True
-    )
-
-    def __repr__(self):
-        return f'<Cart {self.id}>'
