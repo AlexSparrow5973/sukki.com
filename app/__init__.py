@@ -1,7 +1,8 @@
 from flask import Flask
 from flask_migrate import Migrate
 
-from app.models import db
+from app.db import db
+# from app.models import db
 # from app.product.views import blueprint as prod_blueprint
 
 

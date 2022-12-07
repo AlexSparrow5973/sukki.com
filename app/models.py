@@ -13,8 +13,8 @@ db = SQLAlchemy()
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String, unique=True, nullable=False)
-    email = db.Column(db.String, unique=True, nullable=False)
+    name = db.Column(db.String(32), unique=True, nullable=False)
+    email = db.Column(db.String(32), unique=True, nullable=False)
     phone = db.Column(db.String, unique=True)
     password = db.Column(db.String(128))
     role = db.Column(db.String(10), index=True)
@@ -36,7 +36,7 @@ class User(db.Model, UserMixin):
 class ProductGroup(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     group_name = db.Column(db.String, unique=True, nullable=False)
-    description = db.Column(db.String, nullable=True)
+    description = db.Column(db.Text, nullable=True)
     image = db.Column(db.Unicode(128), nullable=True)
 
     def __repr__(self):
@@ -48,26 +48,40 @@ class Product(db.Model):
     name = db.Column(db.String, unique=True, nullable=False)
     price = db.Column(db.Integer)
     count = db.Column(db.Integer)
-    description = db.Column(db.String, nullable=True)
+    description = db.Column(db.Text, nullable=True)
     image = db.Column(db.Unicode(128), nullable=True)
-    productgroup_id = db.Column(
-        db.Integer,
-        db.ForeignKey('productgroup.id', ondelete='CASCADE'),
-        nullable=True,
-        index=True
-    )
-    user_id = db.Column(
-        db.Integer,
-        db.ForeignKey('user.id', ondelete='CASCADE'),
-        nullable=True,
-        index=True
-    )
+    # productgroup_id = db.Column(
+    #     db.Integer,
+    #     db.ForeignKey('productgroup.id', ondelete='CASCADE'),
+    #     nullable=True,
+    #     index=True
+    # )
+    # user_id = db.Column(
+    #     db.Integer,
+    #     db.ForeignKey('user.id', ondelete='CASCADE'),
+    #     nullable=True,
+    #     index=True
+    # )
 
-    productgroup = relationship('ProductGroup', backref='products')
-    user = relationship('User', backref='products')
+    # productgroup = relationship('ProductGroup', backref='products')
+    # user = relationship('User', backref='products')
 
     def __repr__(self):
         return f'<Product {self.id} - {self.name}>'
+
+
+class Cart(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    order_date = db.Column(db.DateTime)
+    # user_id = db.Column(
+    #     db.Integer,
+    #     db.ForeignKey('user.id', ondelete='CASCADE'),
+    #     nullable=True,
+    #     index=True
+    # )
+
+    def __repr__(self):
+        return f'<Cart {self.id}>'
 
 
 cart_product = db.Table(
@@ -75,19 +89,6 @@ cart_product = db.Table(
     db.Column("cart_id", db.Integer, db.ForeignKey("cart.id"), primary_key=True),
     db.Column("product_id", db.Integer, db.ForeignKey("product.id"), primary_key=True),
 )
-
-
-class Cart(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(
-        db.Integer,
-        db.ForeignKey('user.id', ondelete='CASCADE'),
-        nullable=True,
-        index=True
-    )
-
-    def __repr__(self):
-        return f'<Cart {self.id}>'
 
 
 class ProductModelView(ModelView):
