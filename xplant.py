@@ -28,11 +28,10 @@ def get_xplant_products():
     if html:
         soup = BeautifulSoup(html, "html.parser")
         all_products = soup.find('ul', class_='item_list').findAll('li', class_='itemTd')
-        print(all_products[0])
-        # with open('xplant.html', 'w', encoding='utf-8') as fw:
-        #     writer = fw.write()
-        #     for row in writer:
-        #         writerow
+        # print(len(all_products))
+        with open('xplant.html', 'w', encoding='utf-8') as fw:
+            # for product in all_products:
+            fw.write(str(all_products[0]))
 
 
 
