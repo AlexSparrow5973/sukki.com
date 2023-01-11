@@ -24,22 +24,21 @@ def get_html(url):
 
 
 def get_xplant_products():
-    html = get_html("https://www.xplant.co.kr/shop/list.php?ca_id=10&category=10&search_str=&item_name=Echeveria&min_price=&max_price=&sort=0&q=&page=1&is_overseas=false&is_xpress=false")
+    html = get_html("https://www.xplant.co.kr/shop/list.php?ca_id=1010&category=10&search_str=&item_name=Echeveria&priceRange=&min_price=0&max_price=0&sort=3&q=&page=1&is_overseas=&is_xpress=")
     if html:
         soup = BeautifulSoup(html, "html.parser")
-        all_products = soup.find('ul', class_='item_list').findAll('li', class_='itemTd')
-        # print(len(all_products))
-        with open('xplant.html', 'w', encoding='utf-8') as fw:
+        all_products = soup.find('ul', class_='item_list').findAll('div', class_='textEllipsis')
+        # with open('xplant.html', 'w', encoding='utf-8') as fw:
             # for product in all_products:
-            fw.write(str(all_products[0]))
-
-
-
-        # for product in all_products:
-        #     product_img_url = product.find()
-        #     product_text = product.find('a', class_="tm-article-snippet__title-link")
-
-
+            # fw.write(str(all_products[0]))
+        for product in all_products:
+            # name = 
+            price = product.find('span', class_='amount')
+            if price:
+                print(price.text)
+            # count = 
+            # description = 
+            # image = 
 
 '''
             title = news_item.find('span').text

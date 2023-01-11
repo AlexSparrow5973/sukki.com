@@ -2,8 +2,8 @@ from flask import Flask
 from flask_migrate import Migrate
 
 from app.db import db
-# from app.models import db
-# from app.product.views import blueprint as prod_blueprint
+from app.models import db
+from app.product.views import blueprint as prod_blueprint
 
 
 def create_app():
@@ -12,6 +12,6 @@ def create_app():
     db.init_app(app)
     migrate = Migrate(app, db)
 
-    # app.register_blueprint(prod_blueprint)
+    app.register_blueprint(prod_blueprint)
 
     return app
