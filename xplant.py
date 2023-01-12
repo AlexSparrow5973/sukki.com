@@ -1,4 +1,4 @@
-import requests
+import random, requests
 
 from bs4 import BeautifulSoup
 # from app.db import db
@@ -31,14 +31,16 @@ def get_xplant_products():
         # with open('xplant.html', 'w', encoding='utf-8') as fw:
             # for product in all_products:
             # fw.write(str(all_products[0]))
-        for product in all_products:
-            # name = 
-            price = product.find('span', class_='amount')
-            if price:
-                print(price.text)
-            # count = 
+        for product in all_products[:1]:
+            name = product.find('a', class_='textEllipsis').get_text()
+            price = int(product.find('span', class_='amount').get_text()[:-1].replace(',','')) * 0.055
+            count = random.randint(1,4)
             # description = 
             # image = 
+            try:
+                print(f'Succulent {name}. Amount: {price} rubles. Count in stock - {count}')
+            except(ValueError):
+                print("Sorry, this succulent is not find")
 
 '''
             title = news_item.find('span').text
