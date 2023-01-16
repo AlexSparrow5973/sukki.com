@@ -35,10 +35,11 @@ def get_xplant_products():
             name = product.find('a', class_='textEllipsis').get_text()
             price = int(product.find('span', class_='amount').get_text()[:-1].replace(',','')) * 0.055
             count = random.randint(1,4)
+            image_id = product.find('img', class_="before_load_lazy").get('data-src')
             # description = 
-            # image = 
             try:
                 print(f'Succulent {name}. Amount: {price} rubles. Count in stock - {count}')
+                print(f'{image_id}')
             except(ValueError):
                 print("Sorry, this succulent is not find")
 
