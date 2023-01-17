@@ -24,24 +24,23 @@ def get_html(url):
 
 
 def get_xplant_products():
-    html = get_html("https://www.xplant.co.kr/shop/list.php?ca_id=1010&category=10&search_str=&item_name=Echeveria&priceRange=&min_price=0&max_price=0&sort=3&q=&page=1&is_overseas=&is_xpress=")
+    html = get_html("https://www.xplant.co.kr/ru/shop/list.php?ca_id=1010&category=10&search_str=&item_name=Echeveria&priceRange=&min_price=0&max_price=0&sort=3&q=&page=1&is_overseas=&is_xpress=")
     if html:
         soup = BeautifulSoup(html, "html.parser")
-        all_products = soup.find('ul', class_='item_list').findAll('div', class_='textEllipsis')
-        # with open('xplant.html', 'w', encoding='utf-8') as fw:
-            # for product in all_products:
-            # fw.write(str(all_products[0]))
-        for product in all_products[:1]:
-            name = product.find('a', class_='textEllipsis').get_text()
-            price = int(product.find('span', class_='amount').get_text()[:-1].replace(',','')) * 0.055
-            count = random.randint(1,4)
-            image_id = product.find('img', class_="before_load_lazy").get('data-src')
-            # description = 
-            try:
-                print(f'Succulent {name}. Amount: {price} rubles. Count in stock - {count}')
-                print(f'{image_id}')
-            except(ValueError):
-                print("Sorry, this succulent is not find")
+        all_products = soup.find('ul', id_='product1_content').findAll('li')
+        with open('xplant.html', 'w', encoding='utf-8') as fw:
+            fw.write(str(all_products[0]))
+        # for product in all_products[:1]:
+        #     name = product.find('a', class_='textEllipsis').get_text()
+        #     price = int(product.find('span', class_='amount_color').get_text()[:-1].replace(',',''))
+        #     count = random.randint(1,4)
+        #     image_id = product.find('img', class_="before_load_lazy").get('data-src')
+        #     # description = 
+        #     try:
+        #         print(f'Succulent {name}. Amount: {price} rubles. Count in stock - {count}')
+        #         print(f'{image_id}')
+        #     except(ValueError):
+        #         print("Sorry, this succulent is not find")
 
 '''
             title = news_item.find('span').text
