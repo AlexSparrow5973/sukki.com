@@ -26,19 +26,18 @@ def get_xplant_products():
     html = get_html("https://m.xplant.co.kr/shop/list.php?target_locale=ru&ca_id=1010&category=10&search_str=&item_name=Echeveria&priceRange=&min_price=0&max_price=0&sort=3&q=&page=1&is_overseas=&is_xpress=")
     if html:
         soup = BeautifulSoup(html, 'html.parser')
-        all_products = soup.find('ul', id="product1_content").find_all('li')#, limit=30
+        all_products = soup.find('ul', id="product1_content").find_all('li', limit=30)#, limit=30
         # with open('xplant.html', 'w', encoding='utf-8') as fw:
         #     fw.write(str(all_products))
         for product in all_products:
             name = product.find('p', class_='pd_title').get_text().rstrip().title()[3:]
             price = float(product.find('span', class_='amount_color').get_text().replace(',','')[:-1])
             count = random.randint(1,4)
-            image_id = product.find('img', class_='product_img_radius').get('src')
-            # image_url = "https://webp2.xplant.co.kr/data/thumb/item/280x300-2/" + 
+            image_url = product.find('img', class_='product_img_radius').get('data-original')
             # description = 
             try:
                 print(f'Succulent name - {name}. Amount: {price} rubles. Count in stock - {count}')
-                print(f'{image_id}')
+                print(f'{image_url}')
             except(ValueError):
                 print("Sorry, this succulent is not find")
 

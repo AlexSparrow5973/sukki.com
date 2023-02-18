@@ -35,7 +35,7 @@ class User(db.Model, UserMixin):
 
 class ProductGroup(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    group_name = db.Column(db.String, unique=True, nullable=False)
+    group_name = db.Column(db.String(32), unique=True, nullable=False)
     description = db.Column(db.Text, nullable=True)
     image = db.Column(db.Unicode(128), nullable=True)
 
@@ -45,7 +45,7 @@ class ProductGroup(db.Model):
 
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String, unique=True, nullable=False)
+    name = db.Column(db.String(32), unique=True, nullable=False)
     price = db.Column(db.Integer)
     count = db.Column(db.Integer)
     description = db.Column(db.Text, nullable=True)
