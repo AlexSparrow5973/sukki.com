@@ -8,13 +8,35 @@ from bs4 import BeautifulSoup
 
 def get_html(url):
     """Функция преобразует html в string"""
+
     headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64)\
                         AppleWebKit/537.36 (KHTML, like Gecko)\
                         Chrome/106.0.0.0 Safari/537.36'
         }
+
+    params = {
+        'target_locale': 'ru',
+        'ca_id': 1010,
+        'category': 10,
+        'item_name': ['Echeveria',
+            'Haworthia',
+            'Agavoides',
+            'Conophytum',
+            'Sedum',
+            'Graptoveria',
+            'Crassula',
+            'Lithops',
+            'Graptopetalum',  # использует последний из списка !!!
+        ],
+        'min_price': 0,
+        'max_price': 0,
+        'sort': 3,
+        'page': 1,
+    }
+
     try:
-        result = requests.get(url, headers=headers)
+        result = requests.get(url, headers=headers, params=params)
         result.raise_for_status()  # проверка статуса соединения, выдает exception если будут ошибки
         return result.text
     except (requests.RequestException, ValueError):
@@ -23,14 +45,16 @@ def get_html(url):
 
 
 def get_xplant_products():
-    html = get_html("https://m.xplant.co.kr/shop/list.php?target_locale=ru&ca_id=1010&category=10&search_str=&item_name=Echeveria&priceRange=&min_price=0&max_price=0&sort=3&q=&page=1&is_overseas=&is_xpress=")
+    # html = get_html("https://m.xplant.co.kr/shop/list.php?target_locale=ru&ca_id=1010&category=10&search_str=&item_name=Echeveria&priceRange=&min_price=0&max_price=0&sort=3&q=&page=1&is_overseas=&is_xpress=")
+    html = get_html("https://m.xplant.co.kr/shop/list.php")
+
     if html:
         soup = BeautifulSoup(html, 'html.parser')
-        all_products = soup.find('ul', id="product1_content").find_all('li', limit=30)#, limit=30
+        all_products = soup.find('ul', id="product1_content").find_all('li', limit=5)#, limit=30
         # with open('xplant.html', 'w', encoding='utf-8') as fw:
         #     fw.write(str(all_products))
         for product in all_products:
-            name = product.find('p', class_='pd_title').get_text().rstrip().title()[3:]
+            name = product.find('p', class_='pd_title').get_text().rstrip().title()
             price = float(product.find('span', class_='amount_color').get_text().replace(',','')[:-1])
             count = random.randint(1,4)
             image_url = product.find('img', class_='product_img_radius').get('data-original')
