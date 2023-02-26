@@ -5,17 +5,22 @@ from bs4 import BeautifulSoup
 # from app.product.parsers.utils import get_html, save_news
 
 basedir = os.path.abspath(os.path.dirname(__file__))
+prod_image_dir = '\\app\static\prod_image\\'
 
 
 def save_image(image_url, name):
     file = image_url.split('/')[-1]
     h = httplib2.Http('.cache')
     response, content = h.request(image_url)
-    prod_image_dir = '\\app\static\prod_image'
-    os.mkdir(basedir + prod_image_dir, mode=0o777, dir_fd=None)
+    try:
+        os.mkdir(basedir + prod_image_dir + name, mode=0o777, dir_fd=None)
+    except(FileExistsError):
+        pass
     out = open(os.path.join(basedir + prod_image_dir + name, file + '.jpg'), 'wb')
     out.write(content)
     out.close()
+
+
 
 
 def get_html(url, scientific_name):
@@ -58,12 +63,15 @@ def get_xplant_products():
             'Crassula',
             'Lithops',
             'Graptopetalum',
+            'Pachyveria',
+            'Euphorbia',
+            'Adromischus',
         ]
     for scientific_name in item_name:
         html = get_html("https://m.xplant.co.kr/shop/list.php", scientific_name)
         if html:
             soup = BeautifulSoup(html, 'html.parser')
-            all_products = soup.find('ul', id="product1_content").find_all('li', limit=1)
+            all_products = soup.find('ul', id="product1_content").find_all('li', limit=100)
             for product in all_products:
                 name = product.find('p', class_='pd_title').get_text().rstrip().title()
                 price = float(product.find('span', class_='amount_color').get_text().replace(',','')[:-1])
