@@ -1,26 +1,23 @@
 import httplib2, os, random, requests
 from bs4 import BeautifulSoup
-# from app.db import db
-# from app.models import News
+# from flask import current_app
+from app import create_app
+from app.db import db
+from app.models import Product, ProductGroup
 # from app.product.parsers.utils import get_html, save_news
 
 basedir = os.path.abspath(os.path.dirname(__file__))
-prod_image_dir = '\\app\static\prod_image\\'
+app = create_app()
 
 
-def save_image(image_url, name):
-    file = image_url.split('/')[-1]
+def image_loading(image_url, file_name):
+    # file = image_url.split('/')[-1]
     h = httplib2.Http('.cache')
     response, content = h.request(image_url)
-    try:
-        os.mkdir(basedir + prod_image_dir + name, mode=0o777, dir_fd=None)
-    except(FileExistsError):
-        pass
-    out = open(os.path.join(basedir + prod_image_dir + name, file + '.jpg'), 'wb')
+    out = open(os.path.join(basedir + '\\app\static\prod_image\\'), 'wb')
+    # out = open(current_app.config['PRODUCTS_IMAGE_DIR'], 'wb')  # , file + '.jpg'),
     out.write(content)
     out.close()
-
-
 
 
 def get_html(url, scientific_name):
@@ -45,8 +42,7 @@ def get_html(url, scientific_name):
 
     try:
         result = requests.get(url, headers=headers, params=params)
-        result.raise_for_status()  # проверка статуса соединения, выдает exception если будут ошибки
-        # print(result.url)
+        result.raise_for_status()
         return result.text
     except (requests.RequestException, ValueError):
         print("Сетевая ошибка")
@@ -70,6 +66,7 @@ def get_xplant_products():
     for scientific_name in item_name:
         html = get_html("https://m.xplant.co.kr/shop/list.php", scientific_name)
         if html:
+            # save_product_group(scientific_name)
             soup = BeautifulSoup(html, 'html.parser')
             all_products = soup.find('ul', id="product1_content").find_all('li', limit=100)
             for product in all_products:
@@ -77,37 +74,34 @@ def get_xplant_products():
                 price = float(product.find('span', class_='amount_color').get_text().replace(',','')[:-1])
                 count = random.randint(1,4)
                 image_url = product.find('img', class_='product_img_radius').get('data-original')
-                save_image(image_url, scientific_name)
-                # description = 
+                file_name = image_url.split('/')[-1]
+                image_loading(image_url, file_name)
+                image = file_name + 'jpg'
+                save_products(name, price, count, image)
                 try:
                     print(f'Succulent name - {name}. Amount: {price} rubles. Count in stock - {count}')
                     print(f'{image_url}')
                 except(ValueError):
                     print("Sorry, this succulent is not find")
 
-'''
-            title = news_item.find('span').text
-            url = "https://habr.com" + news_item['href']
-            published = news.find('time')['title']
-            try:
-                published = datetime.strptime(published, '%Y-%m-%d, %H:%M')
-            except ValueError:
-                published = datetime.now()
-            save_news(title, url, published)
-'''
+
+def save_products(name, price, count, image):
+    with app.app_context():
+        # products_exists = Product.query.filter(Product.image == image)
+        # if not products_exists:
+        product = Product(name=name, price=price, count=count, image=image)
+        db.session.add(product)
+        db.session.commit()
 
 
-# def get_habr_content_news():
-#     news_without_text = News.query.filter(News.text.is_(None))
-#     for news in news_without_text:
-#         html = get_html(news.url)
-#         if html:
-#             soup = BeautifulSoup(html, "html.parser")
-#             news_content = soup.find('div', class_="article-formatted-body").decode_contents()
-#             if news_content:
-#                 news.text = news_content
-#                 db.session.add(news)
-#                 db.session.commit()
+def save_product_group(group_name):
+    with app.app_context():
+        # product_group_exists = ProductGroup.query.filter(ProductGroup.group_name == group_name)
+        # if not product_group_exists:
+        product_group = ProductGroup(group_name=group_name)
+        db.session.add(product_group)
+        db.session.commit()
+
 
 if __name__=="__main__":
     get_xplant_products()
