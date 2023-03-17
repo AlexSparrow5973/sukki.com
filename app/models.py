@@ -45,11 +45,10 @@ class ProductGroup(db.Model):
 
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(32), unique=True, nullable=False)
-    price = db.Column(db.Integer)
-    count = db.Column(db.Integer)
-    description = db.Column(db.Text, nullable=True)
-    image = db.Column(db.Unicode(128), nullable=True)
+    name = db.Column(db.String, nullable=False)
+    price = db.Column(db.String)
+    count = db.Column(db.String)
+    file_name = db.Column(db.String, nullable=True)
     # productgroup_id = db.Column(
     #     db.Integer,
     #     db.ForeignKey('productgroup.id', ondelete='CASCADE'),
@@ -91,22 +90,22 @@ cart_product = db.Table(
 )
 
 
-class ProductModelView(ModelView):
-    def _list_thumbnail(view, context, model, name):
-        if not model.path:
-            return ""
+# class ProductModelView(ModelView):
+#     def _list_thumbnail(view, context, model, name):
+#         if not model.path:
+#             return ""
 
-        filename = form.thumbgen_filename(model.path)
-        url = url_for('static', filename=filename)
+#         filename = form.thumbgen_filename(model.path)
+#         url = url_for('static', filename=filename)
 
-        return Markup(f'<img src="{url}">')
+#         return Markup(f'<img src="{url}">')
 
-    column_formatters = {"path": _list_thumbnail}
+#     column_formatters = {"path": _list_thumbnail}
 
-    form_extra_fields = {
-        'image': form.ImageUploadField(
-            'Image',
-            base_path=os.path.join(os.path.dirname(__file__), 'static/img'),
-            thumbnail_size=(120, 120, True),
-        )
-    }
+#     form_extra_fields = {
+#         'image': form.ImageUploadField(
+#             'Image',
+#             base_path=os.path.join(os.path.dirname(__file__), 'static/img'),
+#             thumbnail_size=(120, 120, True),
+#         )
+#     }
