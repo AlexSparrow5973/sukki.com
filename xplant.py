@@ -1,4 +1,4 @@
-import httplib2, os, random, requests
+import csv, httplib2, os, random, requests
 from bs4 import BeautifulSoup
 # from flask import current_app
 from app import create_app
@@ -6,18 +6,16 @@ from app.db import db
 from app.models import Product, ProductGroup
 # from app.product.parsers.utils import get_html, save_news
 
-basedir = os.path.abspath(os.path.dirname(__file__))
+
 app = create_app()
 
 
-def image_loading(image_url, file_name):
-    # file = image_url.split('/')[-1]
-    h = httplib2.Http('.cache')
-    response, content = h.request(image_url)
-    out = open(os.path.join(basedir + '\\app\static\prod_image\\'), 'wb')
-    # out = open(current_app.config['PRODUCTS_IMAGE_DIR'], 'wb')  # , file + '.jpg'),
-    out.write(content)
-    out.close()
+def save_csv_file(products_list):
+    fieldnames = ['name', 'price', 'count', 'file_name']
+    with open('products.csv', 'w', encoding='UTF8', newline='') as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames, delimiter=';')
+        writer.writeheader()
+        writer.writerows(products_list)
 
 
 def get_html(url, scientific_name):
@@ -63,6 +61,7 @@ def get_xplant_products():
             'Euphorbia',
             'Adromischus',
         ]
+    products_list = []
     for scientific_name in item_name:
         html = get_html("https://m.xplant.co.kr/shop/list.php", scientific_name)
         if html:
@@ -73,16 +72,19 @@ def get_xplant_products():
                 name = product.find('p', class_='pd_title').get_text().rstrip().title()
                 price = float(product.find('span', class_='amount_color').get_text().replace(',','')[:-1])
                 count = random.randint(1,4)
-                image_url = product.find('img', class_='product_img_radius').get('data-original')
-                file_name = image_url.split('/')[-1]
-                image_loading(image_url, file_name)
-                image = file_name + 'jpg'
-                save_products(name, price, count, image)
-                try:
-                    print(f'Succulent name - {name}. Amount: {price} rubles. Count in stock - {count}')
-                    print(f'{image_url}')
-                except(ValueError):
-                    print("Sorry, this succulent is not find")
+                file_name = product.find('img', class_='product_img_radius').get('data-original').split('/')[-1]
+                # image_loading(image_url, file_name)
+                # image = file_name + 'jpg'
+                product_dict = {'name': name, 'price': price, 'count': count, 'file_name': file_name}
+                products_list.append(product_dict)
+                # print(products_dict)
+    save_csv_file(products_list)
+                # save_products(name, price, count, image)
+                # try:
+                #     print(f'Succulent name - {name}. Amount: {price} rubles. Count in stock - {count}')
+                #     print(f'{image_url}')
+                # except(ValueError):
+                #     print("Sorry, this succulent is not find")
 
 
 def save_products(name, price, count, image):
