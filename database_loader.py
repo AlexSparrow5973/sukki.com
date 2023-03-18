@@ -1,7 +1,6 @@
 import csv
 from app import create_app
-from app.models import db
-from app.models import Product, ProductGroup
+from app.models import db, Product
 
 
 app = create_app()

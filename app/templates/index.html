@@ -111,22 +111,16 @@
       </div>
       <div class="container">
         <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2 g-4">
-          <div class="col">
-            <div class="card">
-              <img src="{{url_for('static', filename='/img/eheveria.png')}}" class="card-img-top" alt="eheveria">
-              <div class="card-body text-center">
-                <a href="#">eheveria</a>
+          {% for product in product_list %}
+            <div class="col">
+              <div class="card">
+                <img src="{{ url_for('static', filename='/prod_image/{{ product.file_name }}') }}" class="card-img-top" alt="{{ product.file_name }}">
+                <div class="card-body text-center">
+                  <a href="#">{{ product.name }}</a>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <img src="{{url_for('static', filename='/img/pahifitum.png')}}" class="card-img-top" alt="pahifitum">
-              <div class="card-body text-center">
-              <a href="#">pahifitum</a>
-              </div>
-            </div>
-          </div>
+          {% endfor %}
         </div>
       </div>
     </section>
