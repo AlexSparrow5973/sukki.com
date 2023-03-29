@@ -101,29 +101,11 @@
         </button>
       </div>
     </section>
-    <section id="catalog" class="catalog-all pt-5 pb-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <h2 class="text-center mb-5">Каталог</h2>
-          </div>
-        </div>
-      </div>
-      <div class="container">
-        <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2 g-4">
-          {% for product in product_list %}
-            <div class="col">
-              <div class="card">
-                <img src="{{ url_for('static', filename='/prod_image/{{ product.file_name }}') }}" class="card-img-top" alt="{{ product.file_name }}">
-                <div class="card-body text-center">
-                  <a href="#">{{ product.name }}</a>
-                </div>
-              </div>
-            </div>
-          {% endfor %}
-        </div>
-      </div>
-    </section>
+
+    {% block catalog %}
+
+    {% endblock %}
+
     <section id="buy_instruction" class="buy-instruction pt-5 pb-5">
       <div class="container">
         <div class="row">
@@ -219,7 +201,6 @@
         </div>
       </div>
     </section>
-    <div class="board4 bg-set"></div>
     <script>
       window.onscroll = function () {
         var scrolled = window.pageYOffset || document.documentElement.scrollTop; // Получаем положение скролла
