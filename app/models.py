@@ -48,7 +48,7 @@ class Product(db.Model):
     name = db.Column(db.String, nullable=False)
     price = db.Column(db.String)
     count = db.Column(db.String)
-    file_name = db.Column(db.String, nullable=True)
+    file_name = db.Column(db.String, nullable=True, default='Rectangle30.png')
     # productgroup_id = db.Column(
     #     db.Integer,
     #     db.ForeignKey('productgroup.id', ondelete='CASCADE'),
