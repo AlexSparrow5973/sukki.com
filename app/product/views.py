@@ -9,5 +9,5 @@ blueprint = Blueprint('product', __name__)
 def index():
     page = request.args.get('page', 1, type=int)
     title = 'Sukki.com'
-    products = Product.query.order_by(Product.price.desc()).paginate(page=page, per_page=16)
+    products = Product.query.order_by(Product.price.desc()).paginate(page=page, per_page=24)
     return render_template('product/catalog.html', title=title, products=products)

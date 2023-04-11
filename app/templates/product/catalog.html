@@ -6,7 +6,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <h2 class="text-center mb-5">Каталог</h2>
+          <h2 class="text-center mb-2">Каталог</h2>
         </div>
       </div>
     </div>
@@ -30,10 +30,10 @@
             {% if page_num %}
               {% if products.page == page_num %}
                 <li class="page-item me-2">
-                  <a class="btn page-link" href="{{ url_for('product.index', page=page_num) }}">{{ page_num }}</a></li>
+                  <a class="btn btn-info mb-4" href="{{ url_for('product.index', page=page_num) }}">{{ page_num }}</a></li>
               {% else %}
                 <li class="page-item me-2">
-                  <a class="btn page-link" href="{{ url_for('product.index', page=page_num) }}">{{ page_num }}</a>
+                  <a class="btn btn-info-outline mb-4" href="{{ url_for('product.index', page=page_num) }}">{{ page_num }}</a>
                 </li>
               {% endif %}
             {% else %}
