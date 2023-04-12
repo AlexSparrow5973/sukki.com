@@ -25,7 +25,7 @@
     {% include "buy_instruction.html" %}
     {% include "about_me.html" %}
     {% include "contacts.html" %}
-
+    {% if products.page == 1 %}
     <script>
       window.onscroll = function () {
         var scrolled = window.pageYOffset || document.documentElement.scrollTop; // Получаем положение скролла
@@ -38,6 +38,7 @@
         }
       };
     </script>
+    {% endif %}
     <script src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
   </body>
 </html>
