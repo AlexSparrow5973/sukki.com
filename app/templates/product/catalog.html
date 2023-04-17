@@ -16,12 +16,21 @@
           <div class="col">
             <div class="card">
               <img src="{{ url_for('static', filename='/prod_image/'+product.file_name) }}" class="card-img-top" alt="{{ product.file_name }}">
-              <img src="{{url_for('static', filename='/img/add-to-cart.png')}}" class="add-to-cart" alt="add-to-cart">
+              <h4 class="price"><strong>{{ product.price }} &#8381</strong></h4>
               <a href="" class="href">
-                <img src="{{url_for('static', filename='/img/heart.png')}}" class="heart" alt="heart">
+                <img 
+                src="{{url_for('static', filename='/img/add-to-cart.png')}}"
+                class="add-to-cart" title="Добавить в корзину"
+                alt="add-to-cart">
+              </a>
+              <a href="" class="href">
+                <img 
+                src="{{url_for('static', filename='/img/heart.png')}}"
+                class="heart" title="Добавить в избранное"
+                alt="heart">
               </a>
               <div class="card-body text-center">
-                <a href="#">{{ product.name }}</a>
+                <a href="#" title="Перейти на карточку товара"><strong>{{ product.name }}</strong></a>
               </div>
             </div>
           </div>
