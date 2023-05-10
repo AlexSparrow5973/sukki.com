@@ -28,11 +28,6 @@ def added_scientific_name(item_name):
                     product.scientific_name=item
                     db.session.commit()
                     break
-                    print('recorded')
-                # else:
-                #     pass
-                    # product.scientific_name="Echeveria"
-                    # db.session.commit()
 
 
 if __name__=='__main__':

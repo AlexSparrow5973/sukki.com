@@ -10,6 +10,20 @@
         </div>
       </div>
     </div>
+    <div class="container pb-5">
+      <div class="dropdown">
+        <a class="btn btn-dark btn-lg dropdown-toggle"
+        href="#" role="button" id="dropdownMenuLink"
+        data-bs-toggle="dropdown" aria-expanded="false">
+          Суккуленты
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <li><a class="dropdown-item" href="{{ url_for('product.echeveria') }}">Echeveria</a></li>
+          <!-- <li><a class="dropdown-item" href="{{ url_for('product.echeveria') }}">Haworthia</a></li> -->
+          <li><a class="dropdown-item" href="#">...</a></li>
+        </ul>
+      </div>
+    </div>
     <div class="container">
       <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2 g-4">
         {% for product in products.items %}
@@ -30,7 +44,9 @@
                 alt="heart">
               </a>
               <div class="card-body text-center">
-                <a href="#" title="Перейти на карточку товара"><strong>{{ product.name }}</strong></a>
+                <a href="{{ url_for('product.card_of_product', product_id=product.id)}}" 
+                title="Перейти на карточку товара"><strong>{{ product.name }}</strong>
+                </a> 
               </div>
             </div>
           </div>
