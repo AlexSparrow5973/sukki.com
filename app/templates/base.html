@@ -18,13 +18,14 @@
     {% include "header.html" %}
     {% include "slider.html" %}
 
-    {% block catalog %}
+    {% block content %}
 
     {% endblock %}
 
     {% include "buy_instruction.html" %}
     {% include "about_me.html" %}
     {% include "contacts.html" %}
+
     {% if products.page == 1 %}
     <script>
       window.onscroll = function () {
@@ -39,6 +40,7 @@
       };
     </script>
     {% endif %}
+
     <script src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
   </body>
 </html>

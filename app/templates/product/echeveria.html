@@ -18,9 +18,9 @@
           Суккуленты
         </a>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <li><a class="dropdown-item" href="{{ url_for('product.echeveria') }}">Echeveria</a></li>
+          <li><a class="dropdown-item active" href="{{ url_for('product.echeveria') }}">Echeveria</a></li>
           <li><a class="dropdown-item" href="{{ url_for('product.haworthia') }}">Haworthia</a></li>
-          <!-- <li><a class="dropdown-item" href="{{ url_for('product.index') }}">Сбросить фильтр</a></li> -->
+          <li><a class="dropdown-item" href="{{ url_for('product.index') }}">Сбросить фильтр</a></li>
         </ul>
       </div>
     </div>
@@ -52,26 +52,24 @@
           </div>
         {% endfor %}
       </div>
-
       <nav class="pt-5" aria-label="Page navigation example"></nav>
-        <ul class="pagination justify-content-center">  
-          {% for page_num in products.iter_pages(left_edge=1, right_edge=1, left_current=5, right_current=8) %}
-            {% if page_num %}
-              {% if products.page == page_num %}
-                <li class="page-item me-2">
-                  <a class="btn btn-info mb-4" href="{{ url_for('product.index', page=page_num) }}">{{ page_num }}</a></li>
-              {% else %}
-                <li class="page-item me-2">
-                  <a class="btn btn-info-outline mb-4" href="{{ url_for('product.index', page=page_num) }}">{{ page_num }}</a>
-                </li>
-              {% endif %}
+      <ul class="pagination justify-content-center">  
+        {% for page_num in products.iter_pages(left_edge=1, right_edge=1, left_current=5, right_current=8) %}
+          {% if page_num %}
+            {% if products.page == page_num %}
+              <li class="page-item me-2">
+                <a class="btn btn-info mb-4" href="{{ url_for('product.echeveria', page=page_num) }}">{{ page_num }}</a></li>
             {% else %}
-            <li class="page-item me-2">...</li>
+              <li class="page-item me-2">
+                <a class="btn btn-info-outline mb-4" href="{{ url_for('product.echeveria', page=page_num) }}">{{ page_num }}</a>
+              </li>
             {% endif %}
-          {% endfor %}
-        </ul>
+          {% else %}
+          <li class="page-item me-2">...</li>
+          {% endif %}
+        {% endfor %}
+      </ul>
       </nav>
-
     </div>
 </section>
 

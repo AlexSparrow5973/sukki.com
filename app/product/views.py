@@ -23,5 +23,13 @@ def card_of_product(product_id):
 
 @blueprint.route('/echeveria/')
 def echeveria():
-    echeveria = Product.query.filter(Product.scientific_name == 'Echeveria').order_by(Product.price.desc()).all()
-    return render_template('echeveria.html', echeveria=echeveria)
+    page = request.args.get('page', 1, type=int)
+    products = Product.query.filter(Product.scientific_name == 'Echeveria').order_by(Product.price.desc()).paginate(page=page, per_page=24)
+    return render_template('product/echeveria.html', products=products)
+
+
+@blueprint.route('/haworthia/')
+def haworthia():
+    page = request.args.get('page', 1, type=int)
+    products = Product.query.filter(Product.scientific_name == 'Haworthia').order_by(Product.price.desc()).paginate(page=page, per_page=24)
+    return render_template('product/haworthia.html', products=products)
