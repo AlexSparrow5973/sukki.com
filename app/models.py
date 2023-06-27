@@ -46,7 +46,7 @@ class ProductGroup(db.Model):
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
-    price = db.Column(db.String)
+    price = db.Column(db.Integer)
     count = db.Column(db.String)
     file_name = db.Column(db.String, nullable=True, default='Rectangle30.png')
     scientific_name = db.Column(db.String)
